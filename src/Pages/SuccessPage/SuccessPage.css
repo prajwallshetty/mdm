@@ -1,0 +1,570 @@
+.success-page {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: radial-gradient(#882222, #35060e);
+}
+
+.success-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 10%;
+    width: 40%;
+    height: 60vh;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 1px 1px 1px rgb(0, 0, 0, 0.5);
+    background: radial-gradient(#882222, #35060e);
+}
+
+.error {
+    width: 100%;
+    height: 80vh;
+    background: radial-gradient(#882222, #35060e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.error-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 10px rgb(0, 0, 0, 0.1);
+}
+
+.error p {
+    margin-top: 10px
+}
+
+
+/* .success-bg-img{
+  position: absolute;
+  width: 100%;
+  object-fit: fill;
+  z-index: -1;
+} */
+
+.success-up {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    z-index: 150;
+}
+
+.success-up p {
+    text-align: center;
+}
+
+.success-up img {
+    height: 40px;
+    width: 40px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.success-down {
+    width: 100%;
+    height: 40%;
+    /* background-color: #25d366; */
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    justify-content: center;
+}
+
+
+/* Lantern Animation */
+
+.flying-lantern {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flyUpFromComponent 12s ease-in-out infinite;
+    /* Slower animation */
+}
+
+.flying-lantern img {
+    width: 50px;
+    opacity: 0.8;
+}
+
+
+/* Keyframes for lantern animation */
+
+@keyframes flyUpFromComponent {
+    0% {
+        transform: translateY(0) translateX(-50%);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-150vh);
+        /* Move higher */
+        opacity: 0;
+    }
+}
+
+
+/* Individual lantern delays */
+
+.flying-lantern:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.flying-lantern:nth-child(2) {
+    animation-delay: 4s;
+    /* Adjusted delay for smoother stagger */
+}
+
+.ticket-overlay {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.516);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.ticket {
+    position: relative;
+    width: 170px;
+    height: 500px;
+    background-color: #25d36557;
+    overflow: hidden;
+}
+
+
+/* Flame effect on the border */
+
+.ticket::before,
+.ticket::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    /* Match ticket’s border radius */
+    border: 3px solid transparent;
+    /* Base border size */
+    box-sizing: border-box;
+    pointer-events: none;
+    /* Ensure it's non-clickable */
+}
+
+
+/* Animate the flame effect along the border */
+
+.ticket::before {
+    border-image: linear-gradient(45deg, transparent, #ffe600, #ff3838, #ff6a00, transparent) 1;
+    animation: flame-animation 1s linear infinite;
+}
+
+
+/* Add additional flickering effect */
+
+.ticket::after {
+    border-image: linear-gradient(45deg, transparent, #ff9d00, #ff0000, #ff9d00, transparent) 1;
+    animation: flicker-animation 1.5s ease-in-out infinite;
+    opacity: 1;
+    /* Subtle flicker overlay */
+}
+
+
+/* Keyframes for flame movement around the border */
+
+@keyframes flame-animation {
+    0% {
+        border-image-source: linear-gradient(45deg, transparent, #ff6a00, #ff3838, #ff6a00, transparent);
+    }
+    50% {
+        border-image-source: linear-gradient(135deg, transparent, #fffbfb, #ff9d00, #ff5700, transparent);
+    }
+    100% {
+        border-image-source: linear-gradient(225deg, transparent, #ff6a00, #ff3838, #ff6a00, transparent);
+    }
+}
+
+
+/* Keyframes for flicker effect */
+
+@keyframes flicker-animation {
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.ticket img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ticket-button-flex i {
+    position: absolute;
+}
+
+.ticket-button-flex {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: end;
+    background-color: #defffa;
+}
+
+.save-flex {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 20px;
+}
+
+.download-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width:700px) {
+    .ticket-overlay {
+        top: 0px;
+    }
+    .success-component {
+        top: 15%;
+        width: 90%;
+    }
+}
+
+
+/* From Uiverse.io by himanshu9682 */
+
+.type--A {
+    --line_color: #555555;
+    --back_color: #ffecf6;
+}
+
+.type--B {
+    --line_color: #1b1919;
+    --back_color: #0829ff;
+}
+
+.type--C {
+    --line_color: #fffbfb;
+    --back_color: #410000;
+}
+
+.button {
+    position: relative;
+    z-index: 0;
+    width: 240px;
+    height: 56px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--line_color);
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.button__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.button::before,
+.button::after,
+.button__text::before,
+.button__text::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--line_color);
+    transition: all 0.5s ease;
+}
+
+.button::before {
+    top: 0;
+    left: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.button::after {
+    top: 0;
+    right: 54px;
+    width: 8px;
+}
+
+.button__text::before {
+    bottom: 0;
+    right: 54px;
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.button__text::after {
+    bottom: 0;
+    left: 54px;
+    width: 8px;
+}
+
+.button__line {
+    position: absolute;
+    top: 0;
+    width: 56px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.button__line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 300px;
+    border: solid 3px var(--line_color);
+}
+
+.button__line:nth-child(1),
+.button__line:nth-child(1)::before {
+    left: 0;
+}
+
+.button__line:nth-child(2),
+.button__line:nth-child(2)::before {
+    right: 0;
+}
+
+.button:hover {
+    letter-spacing: 6px;
+}
+
+.button:hover::before,
+.button:hover .button__text::before {
+    width: 8px;
+}
+
+.button:hover::after,
+.button:hover .button__text::after {
+    width: calc(100% - 56px * 2 - 16px);
+}
+
+.button__drow1,
+.button__drow2 {
+    position: absolute;
+    z-index: -1;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+}
+
+.button__drow1 {
+    top: -16px;
+    left: 40px;
+    width: 32px;
+    height: 0;
+    transform: rotate(30deg);
+}
+
+.button__drow2 {
+    top: 44px;
+    left: 77px;
+    width: 32px;
+    height: 0;
+    transform: rotate(-127deg);
+}
+
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2::before,
+.button__drow2::after {
+    content: "";
+    position: absolute;
+}
+
+.button__drow1::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-60deg);
+}
+
+.button__drow1::after {
+    top: -10px;
+    left: 45px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(69deg);
+}
+
+.button__drow2::before {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-146deg);
+}
+
+.button__drow2::after {
+    bottom: 26px;
+    left: -40px;
+    width: 0;
+    height: 32px;
+    border-radius: 16px;
+    transform-origin: 16px 16px;
+    transform: rotate(-262deg);
+}
+
+.button__drow1,
+.button__drow1::before,
+.button__drow1::after,
+.button__drow2,
+.button__drow2::before,
+.button__drow2::after {
+    background: var(--back_color);
+}
+
+.button:hover .button__drow1 {
+    animation: drow1 ease-in 0.06s;
+    animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow1::before {
+    animation: drow2 linear 0.08s 0.06s;
+    animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow1::after {
+    animation: drow3 linear 0.03s 0.14s;
+    animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2 {
+    animation: drow4 linear 0.06s 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2::before {
+    animation: drow3 linear 0.03s 0.26s;
+    animation-fill-mode: forwards;
+}
+
+.button:hover .button__drow2::after {
+    animation: drow5 linear 0.06s 0.32s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes drow1 {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 100px;
+    }
+}
+
+@keyframes drow2 {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+    }
+    11% {
+        opacity: 1;
+    }
+    100% {
+        width: 120px;
+    }
+}
+
+@keyframes drow3 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 80px;
+    }
+}
+
+@keyframes drow4 {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 120px;
+    }
+}
+
+@keyframes drow5 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 124px;
+    }
+}
+
+.success-btn-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    background-color: #ff000034;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button:not(:last-child) {
+    margin-bottom: 64px;
+}

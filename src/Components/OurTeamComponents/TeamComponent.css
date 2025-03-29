@@ -1,0 +1,1316 @@
+:root {
+  --dark-red: #8B0000;
+  --medium-red: #DC143C;
+  --light-red: #FF4B4B;
+  --gold: #FFD700;
+  --light-gold: #FFE55C;
+  --dark-gold: #B8860B;
+  --fluid-min-width: 320;
+  --fluid-max-width: 1200;
+  --fluid-min-size: 14;
+  --fluid-max-size: 18;
+  --fluid-min-ratio: 1.2;
+  --fluid-max-ratio: 1.25;
+  --primary-color: #8B0000;
+  --secondary-color: #FFD700;
+  --background-color: #fff;
+  --text-color: #333;
+  --card-width: 280px;
+  --card-height: 350px;
+  --card-gap: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideRotateIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) rotate(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes popInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Add new animations */
+@keyframes floatEffect {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 6px rgba(139, 0, 0, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3), 0 0 12px rgba(255, 215, 0, 0.3);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    border-color: var(--dark-red);
+  }
+
+  50% {
+    border-color: var(--gold);
+  }
+
+  100% {
+    border-color: var(--dark-red);
+  }
+}
+
+@keyframes gradientBorder {
+  0% {
+    border-image: linear-gradient(45deg, var(--dark-red), var(--gold)) 1;
+  }
+
+  50% {
+    border-image: linear-gradient(180deg, var(--gold), var(--dark-red)) 1;
+  }
+
+  100% {
+    border-image: linear-gradient(225deg, var(--dark-red), var(--gold)) 1;
+  }
+}
+
+.sambhram-team-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.sambhram-team-container h1 {
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
+  color: var(--dark-red);
+  font-size: 2.8rem;
+  /* reduced from 3.5rem */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  /* reduced from 2px */
+  position: relative;
+  padding-bottom: 0.8rem;
+  /* reduced from 1rem */
+  animation: fadeInDown 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sambhram-team-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  /* reduced from 150px */
+  height: 3px;
+  /* reduced from 4px */
+  background: linear-gradient(to right, var(--dark-red), var(--gold), var(--dark-red));
+}
+
+.sambhram-team-members {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sambhram-team-member-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(139, 0, 0, 0.2);
+  transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    border 0.3s ease;
+  will-change: opacity, transform;
+  width: 100%;
+  height: 350px;
+  /* Fixed height for all cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  /* Maximum width */
+  min-width: 280px;
+  /* Minimum width */
+  margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.8) translateY(50px);
+  backface-visibility: hidden;
+  contain: content;
+  content-visibility: auto;
+  contain-intrinsic-size: 350px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.sambhram-team-member-card.loaded {
+  opacity: 1;
+  transform: none;
+}
+
+.sambhram-team-member-card.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Regular team member cards only */
+.sambhram-team-member-card:not(.head-member):not(.co-head-member) {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  min-width: 280px;
+  padding: 1.5rem;
+}
+
+.sambhram-team-member-card.animate {
+  animation: fadeInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.sambhram-team-member-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(139, 0, 0, 0.2);
+  animation: glowPulse 2s infinite;
+}
+
+.sambhram-team-member-card:hover .member-image {
+  animation: floatEffect 3s ease-in-out infinite;
+  border-width: 4px;
+  animation: borderFlow 3s infinite;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.sambhram-team-section .sambhram-team-member-card:nth-child(10) {
+  animation-delay: 1.0s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(4) {
+  transition-delay: 0.8s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(5) {
+  transition-delay: 1.0s;
+}
+
+.sambhram-team-section.animate .sambhram-team-member-card:nth-child(6) {
+  transition-delay: 1.2s;
+}
+
+.sambhram-team-member-card h3 {
+  color: var(--dark-red);
+}
+
+.sambhram-team-member-card p {
+  color: var(--medium-red);
+}
+
+.sambhram-member-image {
+  width: 130px;
+  /* Consistent image size */
+  height: 130px;
+  /* Consistent image size */
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--gold);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: popInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: 0.3s;
+}
+
+.sambhram-team-member-card:hover .sambhram-member-image {
+  transform: scale(1.1);
+  border-color: var(--medium-red);
+}
+
+.sambhram-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.sambhram-social-links a {
+  color: var(--dark-gold);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  /* Single transition instead of duplicate */
+  transform: scale(1);
+}
+
+.sambhram-social-links a:hover {
+  animation: popUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--gold);
+  transform: scale(1.3) rotate(360deg);
+}
+
+.sambhram-team-section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: opacity, transform;
+}
+
+.sambhram-team-section.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sambhram-team-section h2 {
+  color: var(--dark-red);
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  /* slightly increased for better visibility */
+  position: relative;
+  padding-bottom: 1rem;
+  background: linear-gradient(45deg, var(--dark-red), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.sambhram-team-section h2::before {
+  display: none;
+}
+
+.sambhram-team-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  /* reduced width for a subtle underline */
+  height: 3px;
+  background: linear-gradient(to right, var(--dark-red), var(--gold));
+  opacity: 0.8;
+}
+
+.sambhram-team-section[title="Special Contributors"] h2 {
+  /* Apply the same styles as the Website Team heading */
+  color: var(--dark-red);
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 1rem;
+  background: linear-gradient(45deg, var(--dark-red), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.sambhram-team-section[title="Special Contributors"] h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--dark-red), var(--gold));
+  opacity: 0.8;
+}
+
+.sambhram-head-card {
+  max-width: 900px;
+  /* Increased from 800px */
+  margin: 0 auto 4rem;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #fff5f5, #fff);
+  border-radius: 20px;
+  border-left: 8px solid var(--dark-red);
+  border-right: 8px solid var(--gold);
+  box-shadow: 0 12px 24px rgba(139, 0, 0, 0.2);
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-100px) rotate(-10deg);
+  animation: slideRotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.5s;
+  border: none;
+  position: relative;
+  background: linear-gradient(145deg, #fff5f5, #fff);
+  contain: layout style paint;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.sambhram-head-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 4px solid transparent;
+  border-radius: 20px;
+  background: linear-gradient(45deg, var(--dark-red), var(--gold)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: gradientBorder 3s linear infinite;
+  will-change: transform;
+}
+
+.sambhram-head-image img {
+  width: 250px;
+  /* Increased from 200px */
+  height: 250px;
+  /* Increased from 200px */
+  border-radius: 50%;
+  border: 6px solid var(--gold);
+  box-shadow: 0 8px 16px rgba(139, 0, 0, 0.25);
+  transition: all 0.4s ease;
+}
+
+.sambhram-head-card:hover .sambhram-head-image img {
+  transform: scale(1.08) rotate(5deg);
+  border-color: var(--dark-red);
+  box-shadow: 0 12px 24px rgba(139, 0, 0, 0.3);
+}
+
+.sambhram-head-info {
+  text-align: left;
+  flex: 1;
+}
+
+.sambhram-head-info h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--dark-red), var(--medium-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.sambhram-head-role {
+  font-size: 1.4rem;
+  color: var(--dark-gold);
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sambhram-head-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.sambhram-head-social {
+  justify-content: flex-start;
+}
+
+.sambhram-head-social a {
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: var(--dark-red);
+  transition: all 0.3s ease;
+}
+
+.sambhram-head-social a:hover {
+  color: var(--gold);
+  transform: scale(1.2) rotate(360deg);
+}
+
+.head-member,
+.co-head-member {
+  grid-column: span 2;
+  /* Keep spanning 2 columns */
+  padding: 1.5rem;
+  /* Reduced from 2.5rem */
+  min-height: 380px;
+  /* Added to control height */
+  transform-origin: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.head-member {
+  border-left: 6px solid var(--dark-red);
+  background: linear-gradient(145deg, #fff5f5, #fff);
+  box-shadow: 0 8px 20px rgba(139, 0, 0, 0.15);
+}
+
+.co-head-member {
+  border-left: 6px solid var(--gold);
+  background: linear-gradient(145deg, #fffbf0, #fff);
+  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.15);
+}
+
+/* Head and Co-head specific styles - overriding the fixed height */
+.head-member,
+.co-head-member {
+  height: auto;
+  min-height: 380px;
+  max-width: none;
+  min-width: auto;
+}
+
+.head-member .sambhram-member-image,
+.co-head-member .sambhram-member-image {
+  width: 140px;
+  /* Reduced from 160px */
+  height: 140px;
+  /* Reduced from 160px */
+  margin-bottom: 0.8rem;
+  /* Added to reduce space */
+  border-width: 4px;
+  /* Reduced from 5px */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.head-member .sambhram-member-image {
+  border-color: var(--dark-red);
+}
+
+.co-head-member .sambhram-member-image {
+  border-color: var(--gold);
+}
+
+.head-member h3,
+.co-head-member h3 {
+  font-size: 1.4rem;
+  /* Reduced from 1.6rem */
+  margin: 0.6rem 0;
+  /* Reduced from 1rem */
+  background: linear-gradient(to right, var(--dark-red), var(--medium-red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sambhram-leader-description {
+  color: #555;
+  line-height: 1.4;
+  /* Reduced from 1.6 */
+  margin: 0.6rem auto;
+  /* Reduced from 0.8rem */
+  font-size: 0.85rem;
+  /* Reduced from 0.9rem */
+  font-style: italic;
+  max-width: 90%;
+  /* Increased from 80% for better text flow */
+}
+
+.sambhram-leader-stats {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.head-member .sambhram-social-links a,
+.co-head-member .sambhram-social-links a {
+  font-size: 1.6rem;
+  /* Reduced from 1.8rem */
+  margin: 0 0.6rem;
+  /* Reduced from 0.8rem */
+}
+
+.head-member:hover,
+.co-head-member:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Consolidated Media Queries */
+@media (max-width: 480px) {
+  .sambhram-team-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sambhram-team-members {
+    grid-template-columns: 1fr; /* Ensure one card per row */
+    gap: 1rem; /* Adjust gap between cards */
+    padding: 0.5rem;
+  }
+
+  .sambhram-head-card {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sambhram-head-image img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .sambhram-head-info {
+    text-align: center;
+  }
+
+  .sambhram-head-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .sambhram-head-social {
+    justify-content: center;
+  }
+
+  .head-member,
+  .co-head-member {
+    grid-column: span 1;
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .head-member .sambhram-member-image,
+  .co-head-member .sambhram-member-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .sambhram-leader-description {
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+
+  .sambhram-leader-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sambhram-team-member-card {
+    height: auto;
+    min-height: 320px;
+    padding: 1rem;
+    min-width: auto;
+    transition-duration: 0.3s;
+  }
+
+  .sambhram-team-member-card:not(.head-member):not(.co-head-member) {
+    height: auto;
+    min-height: 320px;
+    padding: 1rem;
+    min-width: auto;
+  }
+
+  .sambhram-member-image {
+    width: 110px;
+    height: 110px;
+  }
+
+  .sambhram-team-members {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .sambhram-team-member-card:not(.head-member):not(.co-head-member) {
+    min-height: 300px;
+    height: auto;
+  }
+
+  .sambhram-image-container {
+    width: 110px;
+    height: 110px;
+  }
+
+  .sambhram-team-container {
+    padding: 1rem;
+  }
+
+  .sambhram-team-members {
+    gap: 1rem;
+    padding: 0.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  .sambhram-team-member-card {
+    min-height: auto;
+    height: auto;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    transform: none;
+    box-shadow: 0 2px 4px rgba(139, 0, 0, 0.15);
+  }
+
+  .sambhram-member-image,
+  .sambhram-image-container {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 0.75rem;
+  }
+
+  .sambhram-team-member-card h3 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+
+  .sambhram-member-role {
+    font-size: 0.9rem;
+  }
+
+  .sambhram-social-links {
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .sambhram-social-links a {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+  }
+
+  /* Head card mobile optimization */
+  .sambhram-head-card {
+    padding: 1rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-direction: column;
+  }
+
+  .sambhram-head-image img {
+    width: 140px;
+    height: 140px;
+    border-width: 3px;
+  }
+
+  .sambhram-head-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sambhram-head-role {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sambhram-head-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  /* Disable heavy animations on mobile */
+  .sambhram-team-member-card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(139, 0, 0, 0.15);
+    animation: none;
+  }
+
+  .sambhram-team-member-card:hover .sambhram-member-image {
+    animation: none;
+    transform: none;
+  }
+
+  /* Optimize touch targets */
+  .sambhram-social-links a {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sambhram-team-section h2 {
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    hyphens: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sambhram-team-section[title="Special Contributors"] h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  .sambhram-team-members {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 768px) {
+  .sambhram-head-card {
+    padding: 1.5rem;
+    border-width: 4px;
+  }
+
+  .sambhram-head-image img {
+    width: 180px;
+    height: 180px;
+    border-width: 4px;
+  }
+
+  .sambhram-head-info h2 {
+    font-size: 2rem;
+  }
+
+  .sambhram-head-role {
+    font-size: 1.1rem;
+  }
+
+  .sambhram-head-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .sambhram-team-member-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px;
+  }
+
+  .sambhram-team-section {
+    contain: content;
+  }
+
+  /* Reduce animation complexity */
+  .sambhram-team-member-card.animate {
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .team-members {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member-card {
+    width: 90%;
+    margin-bottom: var(--card-gap);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .sambhram-team-container h1 {
+    font-size: 2.4rem;
+  }
+
+  .sambhram-team-members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .head-member,
+  .co-head-member {
+    grid-column: span 1;
+  }
+
+  .sambhram-team-members {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .sambhram-team-member-card {
+    min-height: 330px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sambhram-team-members {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .head-member,
+  .co-head-member {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sambhram-team-members {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .sambhram-head-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sambhram-head-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .sambhram-head-info {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .sambhram-team-members {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .head-member,
+  .co-head-member {
+    grid-column: span 2;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .sambhram-social-links a {
+    padding: 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .sambhram-team-member-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Fluid typography */
+@media screen and (min-width: 320px) {
+  :root {
+    --fluid-size: calc(var(--fluid-min-size) * 1px + (var(--fluid-max-size) - var(--fluid-min-size)) * ((100vw - (var(--fluid-min-width) * 1px)) / (var(--fluid-max-width) - var(--fluid-min-width))));
+  }
+
+  body {
+    font-size: var(--fluid-size);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  .sambhram-team-container h1,
+  .sambhram-team-section h2,
+  .sambhram-team-member-card {
+    animation: none;
+  }
+
+  .sambhram-team-section,
+  .sambhram-team-member-card {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .sambhram-team-section.animate,
+  .sambhram-team-member-card.animate {
+    transition: none;
+    animation: none;
+  }
+
+  .head-member:hover,
+  .co-head-member:hover,
+  .sambhram-team-member-card:hover {
+    transform: none;
+  }
+
+  .sambhram-team-member-card:hover,
+  .sambhram-team-member-card:hover .sambhram-member-image,
+  .sambhram-head-card::before,
+  .sambhram-social-links a:hover {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sambhram-team-section {
+    transform-origin: center;
+    perspective: 1000px;
+  }
+
+  .sambhram-team-member-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sambhram-team-member-card:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Add error styling */
+.sambhram-error-container {
+  padding: 2rem;
+  text-align: center;
+  color: var(--dark-red);
+  background: #fff5f5;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(139, 0, 0, 0.1);
+}
+
+/* Image loading improvements */
+.sambhram-image-container {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 1rem;
+}
+
+.sambhram-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Performance optimizations */
+.sambhram-team-member-card {
+  /* ...existing styles... */
+  contain: content;
+  content-visibility: auto;
+  contain-intrinsic-size: 350px;
+  contain: layout style paint;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.sambhram-team-member-card.loaded {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduce paint operations */
+.sambhram-team-member-card:hover {
+  /* ...existing styles... */
+  transform: translateY(-5px) scale(1.03);
+  will-change: transform;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .sambhram-team-member-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sambhram-team-member-card:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Fix mobile issues */
+@media (max-width: 480px) {
+  .sambhram-team-members {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .sambhram-team-member-card:not(.head-member):not(.co-head-member) {
+    min-height: 300px;
+    height: auto;
+  }
+
+  .sambhram-image-container {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Add smooth transitions for all interactive elements */
+.sambhram-team-member-card,
+.sambhram-head-card,
+.sambhram-member-image,
+.sambhram-social-links a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Remove existing animation delays and use CSS custom properties */
+.sambhram-team-section .sambhram-team-member-card {
+  transition-delay: calc(var(--card-index, 0) * 100ms);
+}
+
+/* Optimize performance */
+.sambhram-team-member-card,
+.sambhram-head-card,
+.sambhram-member-image {
+  contain: layout style paint;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Remove animation duplicates */
+.sambhram-team-member-card:hover .sambhram-member-image {
+  animation: floatEffect 3s ease-in-out infinite;
+}
+
+/* Optimize scroll performance */
+.sambhram-team-section {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: opacity, transform;
+}
+
+/* Reduce repaints */
+.sambhram-member-image,
+.sambhram-social-links a,
+.sambhram-head-card::before {
+  will-change: transform;
+}
+
+.team-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.team-container h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--card-gap);
+  position: relative;
+}
+
+.team-member-card {
+  background-color: var(--background-color);
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.team-member-card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.team-member-card h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin: 0.5rem 0;
+}
+
+.team-member-card .member-role {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin: 0.5rem 0;
+}
+
+.team-member-card .member-bio {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin: 0.5rem 1rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--secondary-color);
+}

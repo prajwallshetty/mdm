@@ -1,0 +1,148 @@
+:root {
+    --glow-color: hsl(186 100% 69%);
+  }
+
+.navbar {
+    padding: 20px 4%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1001;
+}
+
+.navbar.transparent {
+    background-color: transparent;
+}
+
+/* Scrolled state background color */
+.navbar.scrolled {
+    background-color: #000000a7;
+    backdrop-filter: blur(6px);
+}
+
+/* Navbar on other pages (constant color) */
+.navbar.other-page {
+    background-color: #000000f5;
+    /* Color for all other pages */
+}
+
+.navbar-left {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-left img {
+    height: 80%;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    font-size: 17px;
+}
+
+.nav-items a {
+    color: white;
+}
+
+.nav-items a.menu-active {
+    color: #E84381;
+}
+
+
+.glowing-btn {
+    width: 110px;
+    height: 30px;
+    background: #ffdd00; /* Replace with actual value of $color-primary */
+    border: none;
+    border-radius: 25px;
+    color: #1e1e1e; /* Replace with actual value of $color-text-light */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    position: relative;
+    text-transform: uppercase;
+}
+.glowing-btn {
+    animation: glow 1s ease-in-out infinite;
+}
+.glowing-btn:hover{
+    animation: none;
+}
+
+.glowing-btn::before {
+    background: #ffdd00; /* Replace with actual value of $color-primary */
+    border-radius: inherit;
+    content: '';
+    filter: blur(10px);
+    opacity: .75;
+    position: absolute;
+    transition: all .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+
+@keyframes scale {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.2);
+        }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+@keyframes glow {
+    0% {
+        background: #ffdd00; 
+        transform: scale(1.0);/* Replace with actual value of $color-primary */
+    }
+    50% {
+        background: #ffdd00; 
+        transform: scale(0.95);/* Replace with actual value of $color-primary */
+
+    }
+    100% {
+        background: #ffdd00;
+        transform: scale(1.0); /* Replace with actual value of $color-primary */
+    }
+}
+/* responsive desigining */
+
+
+@media(max-width:900px) {
+    .nav-items {
+        display: none;
+    }
+
+}
+
+@media(max-width:700px) {
+    .navbar {
+        height: 63px;
+    }
+
+    .navbar h1 {
+        font-size: 20px;
+    }
+    .navbar-left img{
+        width: 78px;
+        height: auto;
+    }
+    
+}

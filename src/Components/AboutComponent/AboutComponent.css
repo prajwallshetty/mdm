@@ -1,0 +1,525 @@
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.about-component {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(-45deg,
+      rgba(255, 245, 245, 1) 0%,
+      rgba(255, 240, 230, 1) 15%,
+      rgba(255, 235, 235, 1) 30%,
+      rgba(255, 215, 0, 0.1) 45%,
+      rgba(139, 0, 0, 0.05) 60%,
+      rgba(180, 20, 20, 0.1) 75%,
+      rgba(255, 200, 0, 0.15) 90%,
+      rgba(255, 245, 245, 1) 100%);
+  background-size: cover;
+  animation: none; /* Remove animation */
+  position: relative;
+  overflow-x: hidden;
+  padding: 80px 20px;
+  padding-top: 120px;
+  /* Increased padding for better spacing */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.about-component::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      rgba(139, 0, 0, 0.05) 0%,
+      rgba(255, 215, 0, 0.05) 50%,
+      rgba(139, 0, 0, 0.05) 100%);
+  background-size: 200% 200%;
+  animation: gradientAnimation 8s ease-in-out infinite reverse;
+  /* Reduced from 15s to 8s */
+  pointer-events: none;
+}
+
+.about-content {
+  max-width: 1400px;
+  /* Increased max-width for better content spread */
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* Consistent spacing between sections */
+}
+
+.about-content h1 {
+  color: #8B0000;
+  /* Dark Red */
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  /* Larger heading */
+  margin-bottom: 60px;
+  /* Increased spacing */
+  text-align: center;
+  position: relative;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.about-content h1::after {
+  content: '';
+  display: block;
+  width: clamp(60px, 10vw, 100px);
+  /* Wider underline */
+  height: clamp(3px, 0.6vw, 5px);
+  /* Thicker underline */
+  background: linear-gradient(90deg, #8B0000, #FFD700);
+  margin: clamp(15px, 3vw, 25px) auto;
+  border-radius: 2px;
+}
+
+.about-card {
+  background: white;
+  padding: 25px;
+  /* Adjusted padding */
+  border-radius: 15px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.05);
+  margin-bottom: 25px;
+  /* Adjusted margin */
+  transition: transform 0.5s ease-out,
+    box-shadow 0.5s ease-out;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(139, 0, 0, 0.1);
+  border-color: #FFD700;
+}
+
+.about-card h2 {
+  color: #8B0000;
+  margin-bottom: 15px;
+  /* Adjusted margin */
+}
+
+.about-card p {
+  color: #555;
+  margin-bottom: 8px;
+  /* Adjusted margin */
+}
+
+.about-description {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.05);
+  transition: transform 0.5s ease-out,
+    box-shadow 0.5s ease-out;
+}
+
+.about-description:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(139, 0, 0, 0.1);
+  border-color: #FFD700;
+}
+
+.about-description p {
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.sambhram-section {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.05);
+  margin-top: 30px;
+  transition: transform 0.5s ease-out,
+    box-shadow 0.5s ease-out;
+}
+
+.sambhram-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(139, 0, 0, 0.1);
+  border-color: #FFD700;
+}
+
+.sambhram-section h2 {
+  color: #8B0000;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Center align the content */
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #8B0000;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  text-align: center;
+  /* Center align the text */
+}
+
+.event-date,
+.venue {
+  background: rgba(255, 215, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  font-size: 1.1rem;
+  width: 100%;
+  /* Make the spans take full width */
+  display: inline-block;
+}
+
+.sambhram-description p {
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.highlight {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 0, 0, 0.1);
+  font-weight: 500;
+  color: #8B0000 !important;
+}
+
+.card-content,
+.description-content,
+.sambhram-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  /* Adjusted gap */
+  align-items: center;
+  /* Center align grid items */
+  justify-content: center;
+  /* Center align grid items */
+}
+
+.card-text,
+.description-text,
+.sambhram-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  /* Adjusted gap */
+  padding: 15px;
+  /* Adjusted padding */
+}
+
+.card-image,
+.description-image,
+.sambhram-image {
+  width: 100%;
+  height: 350px;
+  /* Adjusted height */
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-image img,
+.description-image img,
+.sambhram-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-out;
+  backface-visibility: hidden; /* Improve rendering */
+}
+
+.card-image:hover img,
+.description-image:hover img,
+.sambhram-image:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .about-content h1 {
+    font-size: 2rem;
+    margin-top: clamp(10px, 3vw, 30px);
+    padding: 0 15px;
+  }
+
+  .about-card,
+  .about-description {
+    padding: 18px;
+    /* Adjusted padding */
+  }
+
+  .about-component {
+    padding: 60px 15px;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .about-content {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .about-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .card-content,
+  .description-content,
+  .sambhram-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card-image,
+  .description-image,
+  .sambhram-image {
+    height: 250px;
+    margin-bottom: 15px;
+  }
+
+  .card-text,
+  .description-text,
+  .sambhram-text {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .event-details {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .event-date,
+  .venue {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+
+  .sambhram-description p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content h1 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .about-card,
+  .about-description {
+    padding: 12px;
+    /* Adjusted padding */
+  }
+
+  .about-component {
+    padding: 50px 10px;
+    padding-top: 70px;
+    /* Adjust padding for small screens */
+    margin-top: 50px;
+    /* Additional margin for safety */
+  }
+
+  .sambhram-section {
+    padding: 12px;
+    /* Adjusted padding */
+  }
+
+  .card-image,
+  .description-image,
+  .sambhram-image {
+    height: 220px;
+    /* Adjusted height */
+  }
+
+  .about-content {
+    gap: 20px;
+    /* Adjusted gap */
+  }
+
+  .event-gallery {
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .about-component {
+    padding: 50px 10px;
+  }
+
+  .about-content h1 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .about-card,
+  .about-description,
+  .sambhram-section {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .card-image,
+  .description-image,
+  .sambhram-image {
+    height: 200px;
+  }
+
+  .event-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 16/10;
+  }
+}
+
+.previous-events {
+  margin: 40px auto;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.previous-events h3 {
+  color: #8B0000;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.event-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(15px, 2vw, 25px);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4928 / 3280; /* Updated aspect ratio */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  will-change: transform; /* Promote to GPU layer */
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Remove all hover effects and animations */
+.gallery-item:hover,
+.gallery-item:hover img,
+.gallery-item:hover .image-overlay {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 1200px) {
+  .event-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .previous-events {
+    padding: 20px 15px;
+    margin: 30px auto;
+  }
+
+  .event-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .previous-events {
+    padding: 15px 10px;
+    margin: 20px auto;
+  }
+
+  .event-gallery {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* Remove any duplicate media queries */

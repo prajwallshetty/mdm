@@ -1,0 +1,263 @@
+/* Main container styles */
+.slide-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 125px;
+}
+
+.slide-div h2 {
+  margin-bottom: 30px;
+  font-size: 45px;
+  color: rgb(211, 195, 195);
+  text-shadow: 1px 1px 1px black;
+}
+
+/* Slide content styles */
+.slideContent {
+  width: 300px;
+  height: 370px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease-in-out;
+  opacity: 0.7;
+  display: grid;
+  align-content: end;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+  border-radius: 15px;
+}
+
+.slideContentInner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+  transform: translateZ(2rem);
+  transition: opacity 0.3s linear;
+  color: white;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  text-align: center;
+  /* Add gradient overlay for better text readability*/
+}
+
+/* Text styles */
+.slideContentInner .slideSubtitle {
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.2ch;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.slideContentInner .slideTitle {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.2ch;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.slideContentInner .slideDescription {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.2ch;
+}
+
+/* Background styles */
+.slideBackground {
+  position: fixed !important;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s linear, transform 0.3s ease-in-out;
+  pointer-events: none;
+  transform: translateX(calc(10% * var(--dir)));
+}
+
+/* Active slide styles */
+.slide[data-active] {
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.slide[data-active] .slideBackground {
+  opacity: 0.1;
+  transform: none;
+}
+
+.slide[data-active] .slideContentInner {
+  opacity: 1;
+}
+
+.slide[data-active] .slideContent {
+  --x: calc(var(--px) - 0.5);
+  --y: calc(var(--py) - 0.5);
+  opacity: 1;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateX(calc(100% * var(--offset)));
+  transition: transform 0.5s ease-in-out;
+  transform: scale(1.1);  
+}
+
+/* Hover and gyroscope effect */
+.slide[data-active] .slideContent:hover {
+  transition: none;
+  transform: perspective(1000px) rotateY(calc(var(--x) * 45deg)) rotateX(calc(var(--y) * -45deg));
+}
+
+/* For gyroscope effect, we use the same transform but triggered by device orientation */
+@media (max-width: 700px) {
+  .slide[data-active] .slideContent {
+    transform: perspective(1000px) rotateY(calc(var(--x) * 45deg)) rotateX(calc(var(--y) * -45deg)) ;
+    transition: none;
+  }
+}
+
+/* Wrapper styles */
+.slidesWrapper {
+  position: relative;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+
+
+@media (max-width: 900px) {
+  .slide-div h3 {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .slideContentInner .slideSubtitle {
+    font-size: 12px;
+  }
+  .slideContentInner .slideTitle {
+    font-size: 22px;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+  .slide-div { 
+    height: auto;
+    margin-bottom: 70px;
+    margin-top: 0;
+
+  }
+  .slideContent {
+    width: 240px;
+    height: 370px;
+  }
+  .slidesWrapper {
+    position: relative;
+    height: 430px;
+  }
+  .slide-div h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+}
+
+/* General layout styles */
+.slidesWrapper *,
+.slidesWrapper *::before,
+.slidesWrapper *::after {
+  position: relative;
+}
+
+.slides {
+  display: grid;
+
+}
+
+.slides > .slide {
+  grid-area: 1 / -1;
+}
+
+/* Navigation button styles */
+.slides > .prevSlideBtn,
+.slides > .nextSlideBtn {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+  top: 38%;
+  transition: opacity 0.3s;
+  opacity: 0.7;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.slides > .prevSlideBtn:hover,
+.slides > .nextSlideBtn:hover {
+  opacity: 1;
+}
+
+.slides > .prevSlideBtn:focus,
+.slides > .nextSlideBtn:focus {
+  outline: none;
+}
+
+.slides > .prevSlideBtn {
+  left: -25%;
+}
+
+.slides > .nextSlideBtn {
+  right: -25%;
+}
+
+/* Smooth transitions for gyroscope */
+@media (max-width: 700px) {
+  .slideContent {
+    transition: transform 0.1s ease-out;
+  }
+  
+  .slide[data-active] .slideContent {
+    transition: transform 0.1s ease-out;
+  }
+}
+
+/* Enhanced 3D effect for active slides */
+.slide[data-active] .slideContent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.slide[data-active] .slideContent:hover::after {
+  opacity: 1;
+}

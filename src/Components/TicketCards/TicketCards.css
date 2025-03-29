@@ -1,0 +1,135 @@
+.ticket-cards {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 125px;
+}
+
+.ticket-card-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    margin-top: 50px;
+}
+
+.ticket-card-view {
+    height: 360px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: rgba(181, 0, 0, 0.275);
+    transition: transform 1s ease;
+    overflow: hidden;
+    position: relative;
+    justify-self: center;
+}
+
+.ticket-card-view img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.ticket-card-view:hover {
+    transform: scale(1.01);
+}
+
+.ticket-card-overview {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    z-index: 100;
+    bottom: 0;
+    padding: 35px 20px 10px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 10%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.ticket-card-overview h6 {
+    font-size: 16px;
+    color: rgba(255, 238, 0, 0.997);
+}
+
+.ticket-card-overview p {
+    margin-top: 5px;
+    color: rgba(241, 241, 241, 0.589);
+    font-size: 14px;
+}
+
+.ticket-heading {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    /* background-image: url("https://www.shutterstock.com/image-vector/abstract-circle-lines-wave-gold-600nw-2338008067.jpg"); */
+    margin-bottom: 30px;
+    font-size: 45px;
+    color: rgb(211, 195, 195);
+    text-shadow: 1px 1px 1px black;
+}
+
+.ticket-heading h2 {
+    font-size: 45px;
+}
+
+@media (max-width: 1200px) {
+    .ticket-card-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ticket-card-view {
+        height: 180px;
+        width: 135px;
+    }
+    .ticket-cards {
+        margin-top: 0;
+        height: 100vh;
+    }
+    .ticket-card-list {
+        width: 40%;
+    }
+}
+
+@media (max-width: 900px) {
+    .ticket-heading {
+        width: 100%;
+    }
+    .ticket-heading h2 {
+        font-size: 30px;
+    }
+    .ticket-card-list {
+        grid-template-columns: repeat(2, 1fr);
+        width: 70%;
+        row-gap: 30px;
+    }
+    .ticket-card-overview {
+        padding: 10px;
+        height: 60%;
+    }
+    .ticket-card-overview p {
+        font-size: 12px;
+    }
+    .ticket-card-overview h6 {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+}
+
+@media(max-width:700px) {
+    .ticket-cards {
+        height: 100%;
+        margin-top: 10px;
+    }
+    .ticket-card-list {
+        width: 90%;
+        column-gap: 13px;
+        row-gap: 13px;
+        margin-top: 30px;
+    }
+    .ticket-card-view {
+        width: 165px;
+        height: 275px;
+    }
+    .ticket-heading h2 {
+        font-size: 30px;
+    }
+}

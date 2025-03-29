@@ -1,0 +1,95 @@
+.event-nav-container{
+   height: 60px;
+   width: 100%;
+   position: fixed;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   top: 100px;
+   z-index: 15;
+}
+.event-nav{
+    width:50%;
+    height: 60px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    padding: 8px;
+    box-shadow: 0 0 10px 6px rgba(255, 255, 255, 0.35);
+    /* background: linear-gradient(319deg, #000000, #540000, #630202); */
+    backdrop-filter: blur(10px);
+    background-size: 800% 800%;
+    -webkit-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+.event-nav-type {
+    width: 110px;
+    height: 90%;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.605);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    font-weight: bold;
+font-size: 16px;
+    transition: transform 0.2s; 
+}
+.event-nav .active{
+    background-color: white;
+    box-shadow: 0 0 6px 1px rgb(255, 255, 255);
+    animation: shake 0.3s forwards;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px); /* Move left */
+    }
+    50% {
+        transform: translateX(5px); /* Move right */
+    }
+    75% {
+        transform: translateX(-5px); /* Move left */
+    }
+    100% {
+        transform: translateX(0); /* Return to original position */
+    }
+}
+
+
+@media (max-width:1000px){ 
+    .event-nav-container{
+        top: 100px;
+    }
+    .event-nav{
+        width: 70%;
+
+    }
+}
+@media (max-width:700px) {
+    .event-nav-container{
+        top: 90px;
+    }
+    .event-nav{
+        width: 80%;
+        height: 55px;
+        box-shadow: 0 0 9apx 3px rgba(255, 255, 255, 0.3);
+    }
+    .event-nav-type{
+        width: 30%;
+        font-size: 12px;
+    }
+}

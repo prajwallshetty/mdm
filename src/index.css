@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --navbar-height: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--navbar-height);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Outfit;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.app {
+  margin: auto;
+}
+.Toastify__toast {
+  background: rgba(69, 1, 1, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+/* For better cross-browser compatibility */
+@supports not (backdrop-filter: blur(8px)) {
+  .Toastify__toast {
+      background: rgba(51, 51, 51, 0.9); /* Fallback for browsers that don't support backdrop-filter */
+  }
+}
+@media (max-width:900px) {
+  .app {
+    width: 100%;
+  }
+}
+
+

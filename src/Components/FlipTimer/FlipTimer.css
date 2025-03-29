@@ -1,0 +1,328 @@
+/* Resetting margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Centering the main content horizontally and vertically */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+/* Main styling for the flip timer container */
+
+.flipTimer-wrapper {
+  padding: 60px 40px;
+  background-color: #ffffffab;
+  border-radius: 20px;
+  box-shadow: 0 0.125rem 0.35rem rgba(226, 227, 228, 0.65);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.flipTimer {
+  color: #111111;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 90px;
+  font-weight: bold;
+  line-height: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styling for the separator between time units */
+.flipTimer .seperator {
+  vertical-align: top;
+  display: inline;
+  color: #111111;
+  font-size: 50px;
+  margin: 0 8px;
+}
+
+/* General styling for each time unit container */
+.flipTimer .seconds,
+.flipTimer .minutes,
+.flipTimer .hours,
+.flipTimer .days,
+.days-wrapper,
+.hours-wrapper,
+.minutes-wrapper,
+.seconds-wrapper {
+  height: 100%;
+}
+
+/* Flex alignment for each time unit wrapper */
+.days-wrapper,
+.hours-wrapper,
+.minutes-wrapper,
+.seconds-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inline display for each time unit */
+.flipTimer .seconds,
+.flipTimer .minutes,
+.flipTimer .hours,
+.flipTimer .days {
+  display: inline;
+}
+
+/* Label styling for each time unit */
+.flipTimer .flipTimer-label {
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+/* Styling for each individual digit set */
+.flipTimer .digit-set {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  border: 1px solid #111111;
+  width: 70px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  margin: 0 1px;
+}
+
+/* Positioning and color for each digit */
+.flipTimer .digit {
+  position: absolute;
+  height: 100%;
+  color: #ffffff;
+}
+
+/* Styling for top and bottom sections of each digit */
+.flipTimer .digit > div {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  height: 50%;
+  padding: 0 10px;
+}
+
+/* Top section styling */
+.flipTimer .digit > div.digit-top,
+.flipTimer .digit > div.shadow-top {
+  background-color: #333;
+  border-bottom: 1px solid #333;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Shadow effect for the top part of each digit */
+.flipTimer .digit > div.digit-top:before,
+.flipTimer .digit > div.shadow-top:before {
+  content: "";
+  box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Additional styling and transition for the shadow on top */
+.flipTimer .digit > div.shadow-top {
+  background: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 100%,
+    from(rgba(0, 0, 0, 0)),
+    to(black)
+  );
+  width: 70px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in;
+}
+
+/* Bottom section styling */
+.flipTimer .digit > div.digit-bottom,
+.flipTimer .digit > div.shadow-bottom {
+  background-color: #333;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Shadow and positioning for the bottom part of each digit */
+.flipTimer .digit > div.digit-bottom .digit-wrap,
+.flipTimer .digit > div.shadow-bottom .digit-wrap {
+  display: block;
+  margin-top: -100%;
+}
+
+/* Shadow effect for the bottom part */
+.flipTimer .digit > div.digit-bottom:before,
+.flipTimer .digit > div.shadow-bottom:before {
+  content: "";
+  box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 10px 10px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Additional styling and transition for the shadow on bottom */
+.flipTimer .digit > div.shadow-bottom {
+  background: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 100%,
+    from(black),
+    to(rgba(0, 0, 0, 0))
+  );
+  width: 50px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in;
+}
+
+/* Keyframe animations for the flip effect on top */
+.flipTimer .digit.previous .digit-top,
+.flipTimer .digit.previous .shadow-top {
+  opacity: 1;
+  z-index: 2;
+  -webkit-transform-origin: 50% 100%;
+  -webkit-animation: flipTop 0.3s ease-in both;
+  -moz-transform-origin: 50% 100%;
+  -moz-animation: flipTop 0.3s ease-in both;
+  -ms-transform-origin: 50% 100%;
+  -ms-animation: flipTop 0.3s ease-in both;
+  transform-origin: 50% 100%;
+  animation: flipTop 0.3s ease-in both;
+}
+
+/* Keyframe animations for the flip effect on bottom */
+.flipTimer .digit.previous .digit-bottom,
+.flipTimer .digit.previous .shadow-bottom {
+  z-index: 1;
+  opacity: 1;
+}
+
+/* Styling for the active state on top and bottom parts */
+.flipTimer .digit.active .digit-top {
+  z-index: 1;
+}
+
+.flipTimer .digit.active .digit-bottom {
+  z-index: 2;
+  -webkit-transform-origin: 50% 0%;
+  -webkit-animation: flipBottom 0.3s 0.3s ease-out both;
+  -moz-transform-origin: 50% 0%;
+  -moz-animation: flipBottom 0.3s 0.3s ease-out both;
+  -ms-transform-origin: 50% 0%;
+  -ms-animation: flipBottom 0.3s 0.3s ease-out both;
+  transform-origin: 50% 0%;
+  animation: flipBottom 0.3s 0.3s ease-out both;
+}
+
+/* Background styling for the entire page */
+body {
+  background-color: #ccc;
+  background-image: url("https://images.pexels.com/photos/2395240/pexels-photo-2395240.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Flip animations keyframes
+ */
+@-webkit-keyframes flipTop {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-webkit-keyframes flipBottom {
+  0% {
+    -webkit-transform: perspective(400px) rotateX(90deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) rotateX(0deg);
+  }
+}
+
+@-moz-keyframes flipTop {
+  0% {
+    -moz-transform: perspective(400px) rotateX(0deg);
+  }
+
+  100% {
+    -moz-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-moz-keyframes flipBottom {
+  0% {
+    -moz-transform: perspective(400px) rotateX(90deg);
+  }
+
+  100% {
+    -moz-transform: perspective(400px) rotateX(0deg);
+  }
+}
+
+@-ms-keyframes flipTop {
+  0% {
+    -ms-transform: perspective(400px) rotateX(0deg);
+  }
+
+  100% {
+    -ms-transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-ms-keyframes flipBottom {
+  0% {
+    -ms-transform: perspective(400px) rotateX(90deg);
+  }
+
+  100% {
+    -ms-transform: perspective(400px) rotateX(0deg);
+  }
+}
+
+@-keyframes flipTop {
+  0% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(-90deg);
+  }
+}
+
+@-keyframes flipBottom {
+  0% {
+    transform: perspective(400px) rotateX(90deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+  }
+}

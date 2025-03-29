@@ -1,0 +1,10 @@
+.customDrawer{
+    width: 300px;
+}
+
+
+@media (max-width:700px) {
+    .customDrawer{
+        width: 200px;
+    }
+}

@@ -1,0 +1,71 @@
+.registration-form-div {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    background-color: #00000036;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.team-event-warning {
+    text-align: center;
+    color: rgb(255, 0, 0);
+}
+
+.registration-form h2 {
+    margin: 5px 0 20px 0;
+    text-align: center;
+}
+
+.registration-form option {
+    background-color: #4c0909;
+    color: white;
+}
+
+.registration-form select {
+    background-color: #0000001d;
+    color: rgba(255, 255, 255, 0.537);
+}
+
+.registration-form input {
+    padding: 14px 15px;
+    border-radius: 7px;
+    border: 0px;
+    color: rgba(255, 255, 255, 0.537);
+    margin: 15px 12px;
+    font-size: 14px;
+    background-color: #0000001d;
+    box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form select {
+    padding: 14px 15px;
+    border-radius: 7px;
+    border: 0px;
+    margin: 15px 12px;
+    font-size: 14px;
+    box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form div {
+    padding: 10px;
+    display: flex;
+    color: red;
+}
+
+.registration-form i {
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+@media (max-width:700px) {
+    .registration-form p {
+        font-size: 12px;
+    }
+}

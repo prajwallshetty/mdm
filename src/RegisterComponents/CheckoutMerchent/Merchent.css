@@ -1,0 +1,9 @@
+.merchent-box{
+    position: relative;
+    /* display: flex;
+    margin: 10px; */
+    width: 95px;
+    height: 115px;
+    border-radius: 5px;
+    background-color: coral;
+}

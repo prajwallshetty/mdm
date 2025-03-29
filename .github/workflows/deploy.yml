@@ -1,0 +1,55 @@
+name: Deploy Vite React App to S3 and Invalidate CloudFront
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Set up environment variables
+        run: |
+          echo "REACT_APP_URL=${{ secrets.REACT_APP_URL }}" >> $GITHUB_ENV
+          echo "REACT_APP_RAZORPAY_ID=${{ secrets.REACT_APP_RAZORPAY_ID }}" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vite app
+        run: npm run build
+
+      - name: List dist directory
+        run: |
+          pwd
+          ls -la
+          ls -la dist || echo "Dist directory not found!"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        if: success() && hashFiles('dist/**') != ''
+        run: |
+          echo "Starting S3 sync..."
+          aws s3 sync dist/ s3://${{ secrets.AWS_BUCKET_NAME }} --delete
+
+      - name: Invalidate CloudFront
+        if: success()
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+

@@ -1,0 +1,140 @@
+.main-container{
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container h2{
+    margin-bottom: 30px;
+    font-size: 45px;
+    color: rgb(211, 195, 195);
+    text-shadow: 1px 1px 1px black;
+}
+
+.main-container h3{
+    font-size: 33px;
+    text-shadow: 3px 2px 12px black; 
+}
+
+.hero-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+
+
+.hero {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    min-width: 400px;
+    height: 400px;
+    border-radius: 30px;
+    overflow:hidden;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+    margin: 30px;
+  }
+  
+  .first .image {
+    height: auto;
+    width: 400px;
+    transform: translate(0px, -23px);
+  }
+  
+  .second .image{
+    height: auto;
+    width: 430px;
+    transform: scaleX(-1) translate(30px, 0);
+  }
+
+  .main-container .third .image{
+    height: auto;
+    width: 430px;
+    transform: translate(0, -30px);    
+  }
+
+  .main-container .fourth .image{
+    height: auto;
+    width: 400px;
+    transform: translate(0, -70px) scale(1.3);
+    
+  }
+
+
+  .text {
+    background-image: linear-gradient(10deg , #5e0000, #b00000);
+    border-radius: 30px;
+    position: absolute;
+    top: 55%;
+    left: -5px;
+    height: 65%;
+    width: 108%;
+    transform: skew(19deg, -9deg);
+  }
+  
+  .date-time {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 10px;
+  }
+
+  .third .date-time{
+    padding-top: 20px;
+  }
+
+  .second .date-time{
+    padding-top: 13px;
+  }
+
+  .fourth .date-time{
+    padding-top: 37px;
+  }
+  
+  .main-text {
+    position: absolute;
+    color: #fff;
+    font-weight: 900;
+    left: 150px;
+    bottom: 26%;
+  }
+
+  .date-time .date p{
+    font-size: 20px;
+  }
+  
+  .hero-btn {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding: 10px 20px;
+    border: 0.8px solid #fff;
+  }
+
+  .hero .date{
+    position: relative;
+    z-index: 2;
+    color: white;
+  }
+  
+
+  @media (max-width: 700px) {
+    .hero-container{
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.8);
+    }
+    .hero{
+      margin-top: 0px;
+    }
+    .main-container h2{
+        position: absolute;
+        font-size: 30px;
+        padding-top: 70px;
+    }
+    .main-container{
+      height: 1650px;
+      margin-top: 10px;   
+      }
+}

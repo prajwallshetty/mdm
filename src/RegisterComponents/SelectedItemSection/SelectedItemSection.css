@@ -1,0 +1,213 @@
+.items-section {
+    padding: 20px;
+    background-color: #00000036;
+    min-height: 70vh;
+    color: rgba(255, 255, 255, 0.769);
+}
+
+.items-section h4 {
+    text-align: center;
+    text-shadow: 0 0 4px rgba(254, 0, 0, 0.61);
+}
+
+.coupon-current {
+    width: 100%;
+    display: flex;
+    justify-self: center;
+}
+
+.coupon-current p {
+    color: #ff2010;
+}
+
+.item-section-head {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.item-rows {
+    margin-top: 10px;
+    min-height: 150px;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.items {
+    border-radius: 15px;
+    width: 94%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 2s ease-in;
+}
+
+.items:hover {
+    transform: scale(1.02);
+}
+
+.receipt-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.show-coupons-flex {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 5%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.167);
+    backdrop-filter: blur(10px);
+    z-index: 15;
+}
+
+.coupon-close {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.show-coupons {
+    scale: 0.8;
+}
+
+.current-ticket-section {
+    display: flex;
+}
+
+.btn-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.current-ticket-section img {
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 80px;
+    width: 150px;
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.3);
+}
+
+.cancel {
+    display: flex;
+    align-items: center;
+}
+
+.addMore {
+    position: relative;
+    margin: 10px 0 20px 3px;
+    top: 6px;
+    font-size: 14px;
+    color: #fa4e4e;
+}
+
+.coupon-desc-section {
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coupon-desc-section button {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.886);
+    background-color: #0d0d0d00;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+    height: 30px;
+    width: 150px;
+    transition: transform 1s ease;
+}
+
+.coupon-desc-section button:hover {
+    transform: scale(1.05);
+}
+
+.coupon-desc {
+    padding: 10px;
+    font-size: 15px;
+    animation: bounce 3s ease infinite;
+}
+
+.receipt-section {
+    display: flex;
+    align-items: center;
+}
+
+.total {
+    position: relative;
+    width: 80%;
+    padding: 15px;
+    display: flex;
+    color: rgb(179, 179, 179);
+    flex-direction: column;
+    line-height: 22px;
+}
+
+.grand-total {
+    font-weight: bold;
+    color: #ff2010;
+}
+
+.price p {
+    float: right;
+}
+
+.merchent-section {
+    margin-top: 30px;
+}
+
+.merchent-bo {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media (max-width:700px) {
+    .coupon-desc {
+        font-size: 13px;
+    }
+    .coupon-close {
+        width: 100%;
+    }
+    .show-coupons-flex {
+        top: 0;
+    }
+    .items span {
+        font-size: 13px;
+    }
+    .items-section {
+        height: 100vh;
+    }
+    .receipt-section {
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .current-ticket-section img {
+        width: 400px;
+        height: 180px;
+        margin-top: 0px;
+    }
+    .total {
+        margin-top: 0px;
+        width: 100%;
+    }
+}
